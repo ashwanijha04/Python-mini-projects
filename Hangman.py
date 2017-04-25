@@ -1,6 +1,6 @@
 #constants
 import random
-#Creating a tuple
+#Creating a tuple for the hangman graphic
 HANGMAN = (
 """
     -----
