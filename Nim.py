@@ -4,6 +4,7 @@ turn = 1
 print\
 """
 This is a 2 player game.
+The computer-human based game will be made soon.
 There are a total of 13 sticks.
 Each player choses minimum 1 and maximum 4 sticks in one turn.
 The player who picks up the last stick wins.
