@@ -1,2 +1,2 @@
-# Python-mini-games
-This repository contains small games like tic-tac-toe, Hangman etc just for fun created in python.
+# Python-mini-projects
+Th repository contains mini projects which includes basic games and some useful projects like profanityeditor which helps you to check for curse words in a text file or takeabreak which reminds a busy coder to take regular breaks.
