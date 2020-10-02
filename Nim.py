@@ -1,7 +1,7 @@
 totalSticks = 13
 numberOfSticksPicked = 0
 turn = 1
-print\
+print(
 """
 This is a 2 player game.
 The computer-human based game will be made soon.
@@ -10,18 +10,19 @@ Each player choses minimum 1 and maximum 4 sticks in one turn.
 The player who picks up the last stick wins.
 All the best to both players.
 
-"""
-player1 = raw_input("What is player 1's name?")
-player2 = raw_input("What is player 2's name?")
+""")
+
+player1 = input("What is player 1's name?")
+player2 = input("What is player 2's name?")
 
 while totalSticks:
-    print"Number of sticks remaining: ", totalSticks
-    print "Player", turn, "'s turn."
-    numberOfSticksPicked = int(raw_input("Pick minimum 1 and maximum 4 sticks.\n"))
+    print("Number of sticks remaining: ", totalSticks)
+    print ("Player", turn, "'s turn.")
+    numberOfSticksPicked = int(input("Pick minimum 1 and maximum 4 sticks.\n"))
     if numberOfSticksPicked > totalSticks\
     or numberOfSticksPicked > 4\
     or numberOfSticksPicked < 1:
-        print"That is not allowed. Try picking again."
+        print("That is not allowed. Try picking again.")
         continue
     totalSticks = totalSticks - numberOfSticksPicked
     if turn == 1:
@@ -30,6 +31,6 @@ while totalSticks:
         turn = 1
 
 if turn == 1:
-    print player2 + " won."
+    print (player2 + " won.")
 else:
-    print player1 + " won."
+    print (player1 + " won.")
