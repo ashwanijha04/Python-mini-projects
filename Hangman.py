@@ -1,3 +1,4 @@
+  
 #constants
 import random
 #Creating a tuple for the hangman graphic
@@ -104,14 +105,14 @@ wrong = 0
 used = [] #list of letters already guessed
 
 
-print "Welcome to hangman! Good luck"
+print("Welcome to hangman! Good luck")
 
 while wrong < MAX_WRONG and so_far != word:
-    print HANGMAN[wrong]
-    print "You've used the following letters: \n", used
-    print "The word so far guessed is : ", so_far
+    print(HANGMAN[wrong])
+    print("You've used the following letters: \n", used)
+    print("The word so far guessed is : ", so_far)
 
-    guess = raw_input("Enter your guess: ")
+    guess = input("Enter your guess: ")
     guess = guess.upper()
     used.append(guess)
 
@@ -119,7 +120,7 @@ while wrong < MAX_WRONG and so_far != word:
 
     #Checking the guess
     if guess in word:
-        print "\nYes! ", guess, " is in the word!"
+        print("\nYes! ", guess, " is in the word!")
         #create a new so_far to append guess
         new = ""
         for i in range(len(word)):
@@ -129,16 +130,16 @@ while wrong < MAX_WRONG and so_far != word:
                 new += so_far[i]
         so_far = new
     else:
-        print"\nSorry! The ", guess, " isn't in the word."
+        print("\nSorry! The ", guess, " isn't in the word.")
         wrong += 1
 
 if wrong == MAX_WRONG:
-    print HANGMAN[wrong]
-    print "You know nothing Jon Snow!"
+    print(HANGMAN[wrong])
+    print("You know nothing Jon Snow!")
 
 else:
-    print "Lord Tyrion, you know everything!"
-    print "The word was ", word, "and it's meaning is 'still to come'"
+    print("Lord Tyrion, you know everything!")
+    print("The word was ", word, "and it's meaning is 'still to come'")
 
 
-raw_input("Press enter to exit")
+input("Press enter to exit")
