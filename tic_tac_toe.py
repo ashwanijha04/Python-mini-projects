@@ -132,7 +132,7 @@ def computer_move(board, computer, human):
         if move in legal_moves(board):
             print(move)
             return move
-        
+
 
 def next_turn(turn):
     if turn == "X":
@@ -179,6 +179,3 @@ def main():
 
 main()
 input("Press enter to exit")
-        
-
-    

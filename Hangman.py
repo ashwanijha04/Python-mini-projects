@@ -1,144 +1,57 @@
-#constants
 import random
-#Creating a tuple for the hangman graphic
-HANGMAN = (
-"""
-    -----
-    |    |
-    |
-    |
-    |
-    |
-    |
------------
-""",
+from words import word_list
+from images import IMAGES
 
-"""
-    -----
-    |    |
-    |   o o
-    |
-    |
-    |
-    |
------------
-""",
+def get_word():
+  word = random.choice(word_list)
+  return word.upper()
 
-
-"""
-    -----
-    |    |
-    |   o o
-    |  --+--
-    |
-    |
-    |
------------
-""",
-
-
-"""
-    -----
-    |    |
-    |    o
-    | /--+--
-    |
-    |
-    |
------------
-""",
-
-"""
-    -----
-    |    |
-    |    o
-    | /--+--/
-    |    
-    |    
-    |
------------
-""",
-
-
-"""
-    -----
-    |    |
-    |    o
-    | /--+--/
-    |    |
-    |    |
-    |
------------
-""",
-
-"""
-    -----
-    |    |
-    |    o
-    | /--+--/
-    |    |
-    |   ||
-    |   |
------------
-""",
-
-
-"""
-    -----
-    |    |
-    |    o
-    | /--+--/
-    |    |
-    |   |||
-    |   | |
------------
-""")
-
-MAX_WRONG = len(HANGMAN) - 1
-WORDS = ("SCURRILOUS", "LIBEL", "VACCILATE", "EXTENUATE", "DESULTORY", "PREVARICATE"
-         "ASPERSION", "STOLID", "BLASE", "ENTAIL")
-
-word = random.choice(WORDS) #The word to be guessed
-so_far = "-" * len(word)
-wrong = 0
-used = [] #list of letters already guessed
-
-
-print "Welcome to hangman! Good luck"
-
-while wrong < MAX_WRONG and so_far != word:
-    print HANGMAN[wrong]
-    print "You've used the following letters: \n", used
-    print "The word so far guessed is : ", so_far
-
-    guess = raw_input("Enter your guess: ")
-    guess = guess.upper()
-    used.append(guess)
-
-
-
-    #Checking the guess
-    if guess in word:
-        print "\nYes! ", guess, " is in the word!"
-        #create a new so_far to append guess
-        new = ""
+def play(word):
+  complete_word="_"*len(word)
+  gussed_letters=[]
+  gussed=False
+  tries=8
+  print("\t \t  Let's play hangman game ")
+  print("\t",IMAGES[tries])
+  while not gussed and tries >0:
+    guess = input("\t Please Enter any letter and guess the word \n \t").upper()
+    if len(guess)==1 and guess.isalpha():
+      if guess in gussed_letters:
+        print("YOU ALREADY GUESSED THE WORD  ")
+        print(complete_word)
+        print(IMAGES[8-tries])
+        tries-=1
+      elif guess not in word:
+        print("OPPS!! guess not in words   ")
+        print(IMAGES[8-tries])
+        print(complete_word)
+        tries-=1
+        gussed_letters.append(guess)
+        
+      else:
+        print("GOOD JOB "+guess+" IN WORDS")
+        word_com_list=list(complete_word)
         for i in range(len(word)):
-            if guess == word[i]:
-                new += guess
-            else:
-                new += so_far[i]
-        so_far = new
+          if guess in word[i]:
+            word_com_list[i]=guess
+        complete_word="".join(word_com_list)
+        print("The word so far guessed is :",complete_word)
+        if "_" not in complete_word:
+          gussed=True
+        gussed_letters.append(guess)  
     else:
-        print"\nSorry! The ", guess, " isn't in the word."
-        wrong += 1
-
-if wrong == MAX_WRONG:
-    print HANGMAN[wrong]
-    print "You know nothing Jon Snow!"
-
-else:
-    print "Lord Tyrion, you know everything!"
-    print "The word was ", word, "and it's meaning is 'still to come'"
+      print('NOT A VALID INPUT ')
+  if gussed:
+    print("CONGRATS,YOU WON THE GAME")
+  else:
+    print("SORRY YOU ARE RAN OUT OF TRIES THE WORD WAS -> "+word)
 
 
-raw_input("Press enter to exit")
+def main():
+  var=get_word()
+  play(var)
+  while input("\t \t DO YOU WANT TO PLAY AGAIN ??? (Y/N)").upper=="Y":
+    var=get_word()
+    play(var)
+
+main()
