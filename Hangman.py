@@ -50,7 +50,7 @@ def play(word):
 def main():
   var=get_word()
   play(var)
-  while input("\t \t DO YOU WANT TO PLAY AGAIN ??? (Y/N)").upper=="Y":
+  while input("\t \t DO YOU WANT TO PLAY AGAIN ??? (Y/N)").upper()=="Y":
     var=get_word()
     play(var)
 
